@@ -1,11 +1,19 @@
 import React, {useState} from 'react';
+import Error from './Error';
+
 const Formulario = () => {
 
     const [concepto, guardarConcepto]= useState('');
     const [monto, guardarMonto]= useState(0);
+    const [error, guardarError]= useState(false);
 
     const agregarGasto = e => {
         e.preventDefault();
+        if(monto < 1 || isNaN(monto) || monto === ''){
+            guardarError(true);
+            return;
+        }
+        guardarError(false);
     }
 
     return ( 
@@ -13,6 +21,8 @@ const Formulario = () => {
             onSubmit={agregarGasto}
         >
             <h2>Añade tus gastos aquí</h2>
+            {error ? <Error mensaje="Ambos campos son obligatorios y la
+            cantidad debe ser un número entero"/> : null}
             <div className="campo">
                 <label>Concepto gasto</label>
                 <input
