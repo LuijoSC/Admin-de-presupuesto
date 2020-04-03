@@ -26,7 +26,7 @@ function App() {
 
       guardarNuevoGasto(false);
     }
-  }, [gasto]);
+  }, [gasto, gastos, nuevogasto, sobrante]);
 
   return (
   <div className="container">

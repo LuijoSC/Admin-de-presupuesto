@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {nivelPresupuesto} from '../Helper';
 
 const ControlGastos = ({presupuesto, sobrante}) => {
     return ( 
@@ -6,7 +7,7 @@ const ControlGastos = ({presupuesto, sobrante}) => {
             <div className="alert alert-primary">
                 Presupuesto: ${presupuesto}
             </div>
-              <div className="alert ">
+              <div className={nivelPresupuesto(presupuesto, sobrante)}>
                 Sobrante: ${sobrante}
             </div>
         </Fragment>
