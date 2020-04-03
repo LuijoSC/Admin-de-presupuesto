@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import PropTypes from 'prop-types';
 import Error from './Error'
 
 const Pregunta = ({guardarPresupuesto, guardarSobrante, actualizarPregunta}) => {
@@ -45,5 +46,11 @@ const Pregunta = ({guardarPresupuesto, guardarSobrante, actualizarPregunta}) => 
         </Fragment>
      );
 }
- 
+
+Pregunta.propTypes = {
+    guardarPresupuesto: PropTypes.func.isRequired,
+    guardarSobrante: PropTypes.func.isRequired,
+    actualizarPregunta: PropTypes.func.isRequired
+}
+
 export default Pregunta;
