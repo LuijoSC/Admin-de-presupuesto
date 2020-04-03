@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Error from './Error';
 import shortid from 'shortid';
 
-const Formulario = () => {
+const Formulario = ({agregarOtroGasto}) => {
 
     const [concepto, guardarConcepto]= useState('');
     const [monto, guardarMonto]= useState(0);
@@ -10,7 +10,7 @@ const Formulario = () => {
 
     const agregarGasto = e => {
         e.preventDefault();
-        if(monto < 1 || isNaN(monto) || monto === ''){
+        if(monto < 1 || isNaN(monto) || parseInt(monto) === ''){
             guardarError(true);
             return;
         }
@@ -21,7 +21,10 @@ const Formulario = () => {
             monto,
             id: shortid.generate()
         }
-        console.log(gasto);
+        agregarOtroGasto(gasto);
+
+        guardarConcepto('');
+        guardarMonto(0);
     }
 
     return ( 
@@ -49,7 +52,7 @@ const Formulario = () => {
                     className="u-full-width"
                     placeholder="500"
                     value={monto}
-                    onChange={e => guardarMonto(parseInt(e.target.value, 10))}
+                    onChange={e => guardarMonto(parseInt(e.target.value,10))}
                 />
             </div>
 
