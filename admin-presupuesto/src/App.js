@@ -6,17 +6,22 @@ function App() {
 
   const [presupuesto, guardarPresupuesto] = useState(0);
   const [sobrante, guardarSobrante] = useState(0);
+  const [mostrarpregunta, actualizarPregunta] = useState(true);
 
   return (
   <div className="container">
     <header>
       <h1>Gastos de la semana</h1>
       <div className="contenido-principal contenido">
-        <Pregunta 
-          guardarPresupuesto={guardarPresupuesto}
-          guardarSobrante={guardarSobrante}
-        />
-        <div className="row">
+        {mostrarpregunta ? 
+        (
+          <Pregunta 
+            guardarPresupuesto={guardarPresupuesto}
+            guardarSobrante={guardarSobrante}
+            actualizarPregunta={actualizarPregunta}
+          />
+        ) : (
+          <div className="row">
           <div className="one-half column">
             <Formulario/>
           </div>
@@ -24,6 +29,7 @@ function App() {
             2
           </div>
         </div>
+        )}    
       </div>
     </header>
   </div>
